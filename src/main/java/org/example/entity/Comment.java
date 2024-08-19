@@ -17,7 +17,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User userComment;
 
     public int getId() {
         return id;
@@ -35,12 +35,12 @@ public class Comment {
         this.comment = comment;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserComment() {
+        return userComment;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserComment(User userComment) {
+        this.userComment = userComment;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Comment {
         return "Comment{" +
                 "id=" + id +
                 ", comment='" + comment + '\'' +
-                ", user=" + user +
+                ", userComment=" + userComment +
                 '}';
     }
 }

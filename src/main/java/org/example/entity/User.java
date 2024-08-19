@@ -30,20 +30,20 @@ public class User {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "roleId")
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userSchedule")
     private List<Schedule> schedule;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userComment")
     private List<Comment> comment;
 
     @OneToMany(mappedBy = "user")
-    private List<User> user;
+    private List<ClientRecord> userList;
 
     @OneToMany(mappedBy = "master")
-    private List<User> master;
+    private List<ClientRecord> masterList;
 
     public int getId() {
         return id;
@@ -117,20 +117,20 @@ public class User {
         this.comment = comment;
     }
 
-    public List<User> getUser() {
-        return user;
+    public List<ClientRecord> getUserList() {
+        return userList;
     }
 
-    public void setUser(List<User> user) {
-        this.user = user;
+    public void setUserList(List<ClientRecord> userList) {
+        this.userList = userList;
     }
 
-    public List<User> getMaster() {
-        return master;
+    public List<ClientRecord> getMasterList() {
+        return masterList;
     }
 
-    public void setMaster(List<User> master) {
-        this.master = master;
+    public void setMasterList(List<ClientRecord> masterList) {
+        this.masterList = masterList;
     }
 
     @Override
@@ -145,8 +145,8 @@ public class User {
                 ", role=" + role +
                 ", schedule=" + schedule.size() +
                 ", comment=" + comment.size() +
-                ", user=" + user.size() +
-                ", master=" + master.size() +
+                ", userList=" + userList.size() +
+                ", masterList=" + masterList.size() +
                 '}';
     }
 }

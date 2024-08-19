@@ -22,7 +22,7 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User userSchedule;
 
     public int getId() {
         return id;
@@ -48,12 +48,12 @@ public class Schedule {
         this.endTime = endTime;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserSchedule() {
+        return userSchedule;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserSchedule(User userSchedule) {
+        this.userSchedule = userSchedule;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Schedule {
                 "id=" + id +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", user=" + user +
+                ", userSchedule=" + userSchedule +
                 '}';
     }
 }
