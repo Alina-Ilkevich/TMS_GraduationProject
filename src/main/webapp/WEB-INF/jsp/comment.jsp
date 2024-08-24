@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -66,6 +67,9 @@
             color: #686868;
             text-align: justify
         }
+        div.card{
+            margin: 50px 0px 0px 0px
+        }
     </style>
 </head>
 <body>
@@ -124,28 +128,16 @@
         <div class="col-1">
         </div>
         <div class="col-10">
-            <div class="card">
-                <div class="comment">
-                    <p>В профессию груминга Марию привело приобретение собаки породы ризешнауцер.
-                        Желание качественно заботиться о новом члене семьи послужило причиной окончания Марией
-                        курсов
-                        салонного груминга Романа Фомина в Москве в 2010 году. Эта профессия настолько ее
-                        захватила,
-                        что
-                        она развивается в этом деле уже более 12 лет.В профессию груминга Марию привело приобретение собаки породы ризешнауцер.
-                        Желание качественно заботиться о новом члене семьи послужило причиной окончания Марией
-                        курсов
-                        салонного груминга Романа Фомина в Москве в 2010 году. Эта профессия настолько ее
-                        захватила,
-                        что
-                        она развивается в этом деле уже более 12 лет.</p>
-                </div>
-                <div class="card-body">
-                    <div class="heading">
-                        <p>Мария</p>
+            <p><c:forEach items="${comments}" var="comment">
+                <div class="card">
+                    <div class="comment">
+                        ${comment.comment}
+                    </div>
+                    <div class="heading" >
+                        ${comment.userComment.name}
                     </div>
                 </div>
-            </div>
+            </c:forEach></p>
         </div>
     </div>
 </div>
