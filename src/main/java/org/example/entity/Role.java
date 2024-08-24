@@ -12,7 +12,7 @@ public class Role {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int roleId;
+    private int id;
 
     @Column(name = "role_name")
     private String roleName;
@@ -20,12 +20,12 @@ public class Role {
     @OneToMany(mappedBy = "role")
     private List<User> user;
 
-    public int getRoleId() {
-        return roleId;
+    public int getId() {
+        return id;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRoleName() {
@@ -47,7 +47,7 @@ public class Role {
     @Override
     public String toString() {
         return "Role{" +
-                "roleId=" + roleId +
+                "roleId=" + id +
                 ", roleName='" + roleName + '\'' +
                 ", user=" + user.size() +
                 '}';

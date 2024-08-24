@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "all_user")
 public class User {
 
     @Id
@@ -30,7 +30,7 @@ public class User {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "roleId")
+    @JoinColumn(name = "role_id")
     private Role role;
 
     @OneToMany(mappedBy = "userSchedule")
