@@ -22,7 +22,7 @@ start_time TIMESTAMP NOT NULL,
 end_time TIMESTAMP NOT NULL,
 user_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(user_id) REFERENCES "user" (id)
+FOREIGN KEY(user_id) REFERENCES "all_user" (id)
 )
 
 CREATE TABLE IF NOT EXISTS "comment" (
@@ -30,14 +30,14 @@ id SERIAL NOT NULL,
 comment TEXT NOT NULL,
 user_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(user_id) REFERENCES "user" (id)
+FOREIGN KEY(user_id) REFERENCES "all_user" (id)
 )
 
 CREATE TABLE IF NOT EXISTS "service" (
 id SERIAL NOT NULL,
-service_name VARCHAR(30) NOT NULL,
+service_name VARCHAR(100) NOT NULL,
 description TEXT,
-execution_time TIMESTAMP NOT NULL,
+execution_time INTERVAL NOT NULL,
 cost INT NOT NULL,
 PRIMARY KEY (id)
 )
@@ -49,7 +49,7 @@ user_id INT NOT NULL,
 service_id INT NOT NULL,
 master_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(user_id) REFERENCES "user" (id),
+FOREIGN KEY(user_id) REFERENCES "all_user" (id),
 FOREIGN KEY(service_id) REFERENCES "service" (id),
-FOREIGN KEY(master_id) REFERENCES "user" (id)
+FOREIGN KEY(master_id) REFERENCES "all_user" (id)
 )
