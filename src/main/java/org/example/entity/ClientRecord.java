@@ -18,7 +18,7 @@ public class ClientRecord {
 
     @ManyToOne
     @JoinColumn(name = "service_id")
-    private Service service;
+    private ServiceForAnimal service;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -44,11 +44,11 @@ public class ClientRecord {
         this.time = time;
     }
 
-    public Service getService() {
+    public ServiceForAnimal getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(ServiceForAnimal service) {
         this.service = service;
     }
 
