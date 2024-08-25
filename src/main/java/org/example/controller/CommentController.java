@@ -21,7 +21,6 @@ public class CommentController {
     public String showCommentPage(Model model){
         List<Comment> comments = commentService.findComment();
         model.addAttribute("comments", comments);
-        System.out.println(comments);
         return "comment";
     }
 }

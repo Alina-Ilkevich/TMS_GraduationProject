@@ -12,4 +12,14 @@ public class MainController {
     public String showMainPage(){
         return "main";
     }
+
+    @GetMapping("/contact")
+    public String showContactPage(){
+        return "contact";
+    }
+
+    @GetMapping("/master")
+    public String showMasterPage(){
+        return "master";
+    }
 }
