@@ -86,16 +86,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Услуги</a>
+                    <a class="nav-link" href="/salon/service">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Цены</a>
+                    <a class="nav-link" href="/salon/cost">Цены</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Мастера</a>
+                    <a class="nav-link" href="/salon/master">Мастера</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link" href="/salon/contact">Контакты</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/salon/comment">Отзывы</a>

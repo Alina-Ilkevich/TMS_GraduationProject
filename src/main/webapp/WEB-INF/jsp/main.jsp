@@ -55,9 +55,7 @@
             text-align: justify;
             font-style: italic;
             text-align: center;
-            font-family: serif
-        }
-        div.comment{
+            font-family: serif;
             height: 34rem
         }
         .nav-link{
@@ -83,16 +81,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#">Услуги</a>
+                    <a class="nav-link" data-toggle="tab" href="/salon/service">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Цены</a>
+                    <a class="nav-link" href="/salon/cost">Цены</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Мастера</a>
+                    <a class="nav-link" href="/salon/master">Мастера</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link" href="/salon/contact">Контакты</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/salon/comment">Отзывы</a>
@@ -151,147 +149,44 @@
         </div>
     </div>
 </div>
-<!--<div class="service" id="a">-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="main-heading">
-                    <p>Наши услуги</p>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="main-heading">
+                <p>Наши услуги</p>
             </div>
         </div>
     </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Стрижка собак и кошек</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Правильная стрижка, выполненная мастером, делает шерсть животного более здоровой и
-                                блестящей</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Вычесывание линяющей шерсти и колтунов</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Вычесывание шерсти и колтунов поможет поддерживать вашего любимца в ухоженном
-                                состоянии</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Озонотерапия, SPA-процедуры</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Озонотерапия дезинфицирует кожу питомца, глубоко очищает ее, способствует устранению
-                                раздражения</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Ультразвуковая чистка зубов</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Наиболее действенным способом борьбы с зубным камнем является чистка зубов
-                                ультразвуком</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Подрезание коготков</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Стрижка коготков питомца позволит снизить их ломкость и уберет дискомфорт при ходьбе
-                                животного</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="heading">
-                            <p>Тримминг жесткошерстных пород</p>
-                        </div>
-                        <div class="little-text">
-                            <p>Процедура проводится абсолютно безболезненно мастерами, знающими свое дело</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--</div>-->
-
-
+</div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="heading">
-                        <p>Креативный груминг</p>
-                    </div>
-                    <div class="little-text">
-                        <p>Придайте своему питомцу необычный вид с помощью креативного окрашивания, выбривания
-                            узоров,
-                            блеск-тату и прочего</p>
+        <p><c:forEach begin="0" end="2" items="${services}" var="service">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="heading">
+                            <p>${service.serviceName}</p>
+                        </div>
+                        <div class="little-text">
+                            <p>${service.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </c:forEach></p>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" style="padding: 0px">
+        <div class="col-5">
         </div>
         <div class="col-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="heading">
-                        <p>Чистка зубов зубной пастой</p>
-                    </div>
-                    <div class="little-text">
-                        <p>Здоровые зубы питомца - одни из главных показателей ухода и заботы о нем</p>
-                    </div>
+            <a class="btn btn-outline-dark btn-lg" href="/salon/service" role="button">
+                <div class="little-text" >
+                    <p>Все услуги</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="heading">
-                        <p>Чистка параанальных желез питомца</p>
-                    </div>
-                    <div class="little-text">
-                        <p>Поможем решить эту часто встречающуюся проблему быстро и безболезненно для вашего
-                            любимца</p>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
@@ -302,41 +197,41 @@
             <div class="main-heading">
                 <p>Отзывы</p>
             </div>
-
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
+                        aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
+                        aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                        aria-label="Slide 3"></button>
                 </div>
                 <div class="wrapper">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+                        <p><c:forEach begin="0" end="0" items="${comments}" var="comments">
                             <div class="comment">
-                                <p>Вчера посетили этот салон. Хочется выразить огромную благодарность.</p>
+                                <p>${comments.comment}</p>
                             </div>
+                            </c:forEach></p>
                         </div>
+                        <p><c:forEach begin="1" end="2" items="${comments}" var="comments">
                         <div class="carousel-item">
+
                             <div class="comment">
-                                <p>Спасибо салону "Dog and cat"</p>
+                                <p>${comments.comment}</p>
                             </div>
+
                         </div>
-                        <div class="carousel-item">
-                            <div class="comment">
-                                <p>Хочу поблагодарить мастера за чуткость, внимание и терпение к моему питомцу</p>
-                            </div>
-                        </div>
+                        </c:forEach></p>
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="col-6">
             <img width="654" height="654"
-                 src="https://sobakovod.club/uploads/posts/2021-11/thumbs/1637798654_83-sobakovod-club-p-sobaki-strizhka-sobak-kartinki-88.png">
+            src="https://sobakovod.club/uploads/posts/2021-11/thumbs/1637798654_83-sobakovod-club-p-sobaki-strizhka-sobak-kartinki-88.png">
         </div>
     </div>
 </div>
