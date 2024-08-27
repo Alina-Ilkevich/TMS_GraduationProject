@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "service")
-public class ServiceForAnimal {
+public class AnimalService {
 
     @Id
     @Column(name = "id")

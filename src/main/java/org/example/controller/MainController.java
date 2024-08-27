@@ -1,9 +1,9 @@
 package org.example.controller;
 
 import org.example.entity.Comment;
-import org.example.entity.ServiceForAnimal;
+import org.example.entity.AnimalService;
 import org.example.service.CommentService;
-import org.example.service.ServiceForAnimalService;
+import org.example.service.AnimalServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +17,15 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private ServiceForAnimalService service;
+    private AnimalServiceService service;
 
     @Autowired
     private CommentService comment;
 
     @GetMapping("/main")
     public String showMainPage(Model model){
-        List<ServiceForAnimal> services = service.findService();
+        List<AnimalService> services = service.findService();
         model.addAttribute("services", services);
-
         List<Comment> comments = comment.findComment();
         model.addAttribute("comments", comments);
 
