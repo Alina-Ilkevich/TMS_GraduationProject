@@ -4,7 +4,7 @@ role_name VARCHAR(20) NOT NULL,
 PRIMARY KEY (id)
 )
 
-CREATE TABLE IF NOT EXISTS "all_user" (
+CREATE TABLE IF NOT EXISTS "user" (
 id SERIAL NOT NULL,
 name VARCHAR(30) NOT NULL,
 login VARCHAR(64) NOT NULL,
@@ -22,7 +22,7 @@ start_time TIMESTAMP NOT NULL,
 end_time TIMESTAMP NOT NULL,
 user_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(user_id) REFERENCES "all_user" (id)
+FOREIGN KEY(user_id) REFERENCES "user" (id)
 )
 
 CREATE TABLE IF NOT EXISTS "comment" (
@@ -30,7 +30,7 @@ id SERIAL NOT NULL,
 comment TEXT NOT NULL,
 user_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY(user_id) REFERENCES "all_user" (id)
+FOREIGN KEY(user_id) REFERENCES "user" (id)
 )
 
 CREATE TABLE IF NOT EXISTS "service" (
@@ -51,5 +51,5 @@ master_id INT NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY(user_id) REFERENCES "all_user" (id),
 FOREIGN KEY(service_id) REFERENCES "service" (id),
-FOREIGN KEY(master_id) REFERENCES "all_user" (id)
+FOREIGN KEY(master_id) REFERENCES "user" (id)
 )
