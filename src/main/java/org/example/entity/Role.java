@@ -17,9 +17,6 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role")
-    private List<User> user;
-
     public int getId() {
         return id;
     }
@@ -36,20 +33,11 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Role{" +
                 "roleId=" + id +
                 ", roleName='" + roleName + '\'' +
-                ", user=" + user.size() +
                 '}';
     }
 }

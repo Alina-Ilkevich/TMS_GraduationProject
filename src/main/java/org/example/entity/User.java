@@ -33,18 +33,6 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "userSchedule")
-    private List<Schedule> schedule;
-
-    @OneToMany(mappedBy = "userComment")
-    private List<Comment> comment;
-
-    @OneToMany(mappedBy = "user")
-    private List<ClientRecord> userList;
-
-    @OneToMany(mappedBy = "master")
-    private List<ClientRecord> masterList;
-
     public int getId() {
         return id;
     }
@@ -101,38 +89,6 @@ public class User {
         this.role = role;
     }
 
-    public List<Schedule> getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(List<Schedule> schedule) {
-        this.schedule = schedule;
-    }
-
-    public List<Comment> getComment() {
-        return comment;
-    }
-
-    public void setComment(List<Comment> comment) {
-        this.comment = comment;
-    }
-
-    public List<ClientRecord> getUserList() {
-        return userList;
-    }
-
-    public void setUserList(List<ClientRecord> userList) {
-        this.userList = userList;
-    }
-
-    public List<ClientRecord> getMasterList() {
-        return masterList;
-    }
-
-    public void setMasterList(List<ClientRecord> masterList) {
-        this.masterList = masterList;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -143,10 +99,6 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
-                ", schedule=" + schedule.size() +
-                ", comment=" + comment.size() +
-                ", userList=" + userList.size() +
-                ", masterList=" + masterList.size() +
                 '}';
     }
 }

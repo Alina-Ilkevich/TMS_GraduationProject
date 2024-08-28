@@ -27,9 +27,6 @@ public class AnimalService {
     @Column(name = "cost")
     private int cost;
 
-    @OneToMany(mappedBy = "service")
-    private List<ClientRecord> clientRecord;
-
     public int getId() {
         return id;
     }
@@ -70,14 +67,6 @@ public class AnimalService {
         this.cost = cost;
     }
 
-    public List<ClientRecord> getClientRecord() {
-        return clientRecord;
-    }
-
-    public void setClientRecord(List<ClientRecord> clientRecord) {
-        this.clientRecord = clientRecord;
-    }
-
     @Override
     public String toString() {
         return "Service{" +
@@ -86,7 +75,6 @@ public class AnimalService {
                 ", description='" + description + '\'' +
                 ", executionTime=" + executionTime +
                 ", cost=" + cost +
-                ", clientRecord=" + clientRecord.size() +
                 '}';
     }
 }
