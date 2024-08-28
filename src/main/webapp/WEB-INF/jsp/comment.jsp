@@ -107,7 +107,6 @@
         </div>
     </div>
 </div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
@@ -123,7 +122,6 @@
     </div>
 </div>
 
-<div class="container-fluid">
     <div class="row">
         <div class="col-1">
         </div>
@@ -142,5 +140,26 @@
     </div>
 </div>
 
+<div class="little-text">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+        </div>
+            <div class="col-4">
+                <div>
+                    <c:if test="${currentPage > 0}">
+                        <a href="?page=${currentPage - 1}">Previous</a>
+                    </c:if>
+
+                    Page ${currentPage + 1} of ${totalPages}
+
+                    <c:if test="${currentPage < totalPages - 1}">
+                        <a href="?page=${currentPage + 1}">Next</a>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
