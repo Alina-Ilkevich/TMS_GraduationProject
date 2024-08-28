@@ -1,8 +1,7 @@
 package org.example.controller;
 
-import org.example.entity.Comment;
-import org.example.entity.ServiceForAnimal;
-import org.example.service.ServiceForAnimalService;
+import org.example.entity.AnimalService;
+import org.example.service.AnimalServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,21 +12,21 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/salon")
-public class ServiceForAnimalController {
+public class AnimalServiceController {
 
     @Autowired
-    private ServiceForAnimalService serviceForAnimalService;
+    private AnimalServiceService serviceForAnimalService;
 
     @GetMapping("/service")
     public String showServicePage(Model model){
-        List<ServiceForAnimal> services = serviceForAnimalService.findService();
+        List<AnimalService> services = serviceForAnimalService.findService();
         model.addAttribute("services", services);
         return "service";
     }
 
     @GetMapping("/cost")
     public String showCostPage(Model model){
-        List<ServiceForAnimal> costs = serviceForAnimalService.findService();
+        List<AnimalService> costs = serviceForAnimalService.findService();
         model.addAttribute("costs", costs);
         return "cost";
     }
