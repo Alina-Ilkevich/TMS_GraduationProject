@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.entity.Comment;
+import org.example.entity.User;
 import org.example.service.CommentService;
 import org.example.util.consts.PaginationConst;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,4 +37,17 @@ public class CommentController {
 
         return "comment";
     }
+
+    @GetMapping("/addcomment")
+    public String showAddCommentPage(Model model){
+        model.addAttribute("commentForm", new Comment());
+        return "addComment";
+    }
+
+    @PostMapping("/addcomment")
+    public String addComment(@ModelAttribute("commentForm") Comment comment, Model model){
+        commentService.saveComment(comment);
+        return "redirect:/all/salon/comment";
+    }
+
 }

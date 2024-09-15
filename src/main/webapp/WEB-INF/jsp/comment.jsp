@@ -138,6 +138,40 @@
     </div>
 </div>
 
+<sec:authorize access="isAuthenticated()">
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px">
+            <div class="col-5">
+            </div>
+            <div class="col-4">
+                <a class="btn btn-outline-dark btn-lg" href="/all/salon/addcomment" role="button">
+                    <div class="little-text" >
+                        <p>Оставить отзыв</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</sec:authorize>
+
+<sec:authorize access="!isAuthenticated()">
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <a class="btn btn-outline-dark btn-lg" href="/login" role="button">
+                    <div class="little-text" >
+                        <p>Чтобы оставить отзыв, войдите</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</sec:authorize>
+
     <div class="row">
         <div class="col-1">
         </div>
