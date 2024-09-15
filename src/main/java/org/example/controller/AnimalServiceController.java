@@ -21,7 +21,7 @@ public class AnimalServiceController {
     public String showServicePage(Model model){
         List<AnimalService> services = serviceForAnimalService.findService();
         model.addAttribute("services", services);
-        return "service";
+        return "animalService";
     }
 
     @GetMapping("/cost")
