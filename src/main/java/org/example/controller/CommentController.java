@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/salon")
+@RequestMapping("/all/salon")
 public class CommentController {
 
     @Autowired

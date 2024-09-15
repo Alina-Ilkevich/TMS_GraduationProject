@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/salon")
+@RequestMapping("/all/salon")
 public class MainController {
 
     @Autowired
@@ -41,4 +41,5 @@ public class MainController {
     public String showMasterPage(){
         return "master";
     }
+
 }
