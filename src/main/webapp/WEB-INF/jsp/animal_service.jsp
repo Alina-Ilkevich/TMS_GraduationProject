@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -75,7 +76,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10">
+        <div class="col-8">
             <ul class="nav nav-underline">
                 <li class="nav-item">
 
@@ -86,24 +87,39 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/salon/service">Услуги</a>
+                    <a class="nav-link" data-toggle="tab" href="/all/salon/service">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/salon/cost">Цены</a>
+                    <a class="nav-link" href="/all/salon/cost">Цены</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/salon/master">Мастера</a>
+                    <a class="nav-link" href="/all/salon/master">Мастера</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/salon/contact">Контакты</a>
+                    <a class="nav-link" href="/all/salon/contact">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/salon/comment">Отзывы</a>
+                    <a class="nav-link" href="/all/salon/comment">Отзывы</a>
                 </li>
             </ul>
         </div>
         <div class="col-2">
-            <!--            TODO кнопка для авторизации-->
+            <li class="nav-item">
+                <sec:authorize access="!isAuthenticated()">
+                    <a class="nav-link" href="/all/registration">Зарегистрироваться</a>
+                </sec:authorize>
+            </li>
+        </div>
+
+        <div class="col-2">
+            <li class="nav-item">
+                <sec:authorize access="!isAuthenticated()">
+                    <a class="nav-link" href="/login">Войти</a>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <a class="nav-link" href="/logout">Выйти</a>
+                </sec:authorize>
+            </li>
         </div>
     </div>
 </div>

@@ -33,7 +33,7 @@ PRIMARY KEY (id),
 FOREIGN KEY(user_id) REFERENCES "user" (id)
 )
 
-CREATE TABLE IF NOT EXISTS "service" (
+CREATE TABLE IF NOT EXISTS "animal_service" (
 id SERIAL NOT NULL,
 service_name VARCHAR(100) NOT NULL,
 description TEXT,

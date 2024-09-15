@@ -7,7 +7,7 @@ import java.sql.Time;
 import java.util.List;
 
 @Entity
-@Table(name = "service")
+@Table(name = "animal_service")
 public class AnimalService {
 
     @Id
