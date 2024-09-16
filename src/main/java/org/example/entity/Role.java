@@ -3,8 +3,6 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "role")
 public class Role {

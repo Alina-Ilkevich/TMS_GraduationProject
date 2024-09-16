@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import org.example.entity.Comment;
-import org.example.entity.User;
 import org.example.service.CommentService;
 import org.example.util.consts.PaginationConst;
 import org.springframework.beans.factory.annotation.Autowired;

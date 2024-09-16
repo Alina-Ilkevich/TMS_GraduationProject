@@ -1,6 +1,5 @@
 package org.example.service;
 
-import org.example.entity.Comment;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.repository.UserRepository;

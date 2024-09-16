@@ -4,7 +4,6 @@ package org.example.entity;
 import jakarta.persistence.*;
 
 import java.sql.Time;
-import java.util.List;
 
 @Entity
 @Table(name = "animal_service")

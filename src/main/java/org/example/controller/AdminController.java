@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.example.entity.AnimalService;
 import org.example.entity.User;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
