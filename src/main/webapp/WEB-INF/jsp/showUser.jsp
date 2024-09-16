@@ -42,25 +42,18 @@
         div.little-text{
             font-size: 1.5em;
             text-align: justify;
-            text-align: center;
             font-family: serif
         }
         div.row{
             padding: 30px
         }
-        div.card{
-            width: 38rem;
-            height: 84rem;
-        }
         div.comment{
+        padding: 30px;
             font-size: 1.5em;
             text-align: justify;
             font-style: italic;
-            text-align: center;
+            text-align: justify;
             font-family: serif
-        }
-        div.comment{
-            height: 34rem
         }
         .nav-link{
             font-size: 1.5em;
@@ -69,10 +62,16 @@
             text-align: center;
         }
         div.xs-text{
-            font-size: 1.2em;
+            font-size: 1em;
             font-family: serif;
-            color: #686868;
-            text-align: justify
+        }
+        div.card{
+            width: 38rem;
+            height: 84rem;
+            margin: 50px 0px 0px 0px
+        }
+        div.wrapper{
+            padding: 5px 80px 5px 135px;
         }
     </style>
 </head>
@@ -82,7 +81,6 @@
         <div class="col-8">
             <ul class="nav nav-underline">
                 <li class="nav-item">
-
                     <a class="nav-link active" aria-current="page" href="main">
                         <img src="https://static.tildacdn.com/tild3139-3735-4137-a131-323461353465/img_26395_1.png"
                              width="30"
@@ -111,19 +109,9 @@
                 </sec:authorize>
             </ul>
         </div>
-        <div class="col-2">
-            <li class="nav-item">
-                <sec:authorize access="!isAuthenticated()">
-                    <a class="nav-link" href="/all/registration">Зарегистрироваться</a>
-                </sec:authorize>
-            </li>
-        </div>
 
         <div class="col-2">
             <li class="nav-item">
-                <sec:authorize access="!isAuthenticated()">
-                    <a class="nav-link" href="/login">Войти</a>
-                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <a class="nav-link" href="/logout">Выйти</a>
                 </sec:authorize>
@@ -136,7 +124,7 @@
     <div class="row">
         <div class="col-6">
             <div class="main-text">
-                <p><br>Контакты</p>
+                <p><br>Все пользователи</p>
             </div>
         </div>
 
@@ -146,49 +134,103 @@
         </div>
     </div>
 </div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-1">
+<div class="wrapper">
+    <a class="btn btn-outline-dark btn-lg" href="/admin/adminpage" role="button">
+        <div class="little-text" >
+            <p>Назад</p>
         </div>
-        <div class="col-10">
-            <div class="little-text">
-                <p>Ждем вас в нашем салоне груминга, где ваш питомец заботливо преобразуется под надежным вниманием наших опытных специалистов.</p>
+    </a>
+</div>
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px">
+            <div class="col-1">
+                <div class="little-text">
+                    <p>ID</p>
+                </div>
             </div>
+            <div class="col-11">
+                <div class="row" style="padding: 0px">
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Имя</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="little-text">
+                            <p>Логин</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Номер телефона</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Email</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Роль</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px">
+            <p><c:forEach items="${users}" var="user">
+                <div class="col-1">
+                    <div class="xs-text">
+                        <p>${user.id}</p>
+                    </div>
+                </div>
+                <div class="col-11">
+                    <div class="row" style="padding: 0px">
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${user.name}</p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="xs-text">
+                                <p>${user.login}</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${user.phoneNumber}</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${user.email}</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${user.role.roleName}</p>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="xs-text">
+                                <form action="/admin/showuser" method="post">
+                                    <input type="hidden" name="userId" value="${user.id}"/>
+                                    <input type="hidden" name="action" value="delete"/>
+                                <button type="submit" class="btn btn-secondary  btn-sm">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </c:forEach></p>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-4">
-            <div class="heading">
-                <p><img src="https://salon-manifik.by/assets/images/icons/icon-phone.svg">
-                Телефоны</p>
-            </div>
-            <div class="little-text">
-                <p>+375 (29) 305-2-777<br>
-                    +375 (33) 303-2-777<br>
-                    +375 (17) 275-2-777</p>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="heading">
-                <p><img src="https://salon-manifik.by/assets/images/icons/icon-addr.svg">Адрес и режим работы</p>
-            </div>
-            <div class="little-text">
-                <p>C 10:00 до 20:00 ежедневно<br>
-                    г. Минск,пр-т Победителей 127<br>
-                    Работаем только
-                    по предварительной записи</p>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="heading">
-                <p><img src="https://salon-manifik.by/assets/images/icons/icon-email.svg">E-mail</p>
-            </div>
-            <div class="little-text">
-                <p>dog_and_cat@gmail.com</p>
-            </div>
-        </div>
 </body>
-</html>

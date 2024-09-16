@@ -103,6 +103,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/all/salon/comment">Отзывы</a>
                 </li>
+                <sec:authorize access="hasRole('admin')">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/adminpage">Для админа</a>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
         <div class="col-2">
