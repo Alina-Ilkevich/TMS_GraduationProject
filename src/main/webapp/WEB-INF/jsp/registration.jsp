@@ -103,8 +103,8 @@
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
-            <button type="submit" a href="/all/main/salon" class="btn btn-secondary w-100 mt-2">Вернуться на главную</a>
+            <button type="submit" class="btn btn-primary w-100" style="margin-bottom: 5px">Зарегистрироваться</button>
+            <a class="btn btn-primary w-100" href="/all/salon/main" role="button">Вернуться на главную</a>
         </form:form>
     </div>
 </div>
