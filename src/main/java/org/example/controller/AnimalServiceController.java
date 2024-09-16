@@ -15,18 +15,18 @@ import java.util.List;
 public class AnimalServiceController {
 
     @Autowired
-    private AnimalServiceService serviceForAnimalService;
+    private AnimalServiceService animalServiceService;
 
     @GetMapping("/service")
     public String showServicePage(Model model){
-        List<AnimalService> services = serviceForAnimalService.findService();
+        List<AnimalService> services = animalServiceService.findService();
         model.addAttribute("services", services);
         return "animalService";
     }
 
     @GetMapping("/cost")
     public String showCostPage(Model model){
-        List<AnimalService> costs = serviceForAnimalService.findService();
+        List<AnimalService> costs = animalServiceService.findService();
         model.addAttribute("costs", costs);
         return "cost";
     }
