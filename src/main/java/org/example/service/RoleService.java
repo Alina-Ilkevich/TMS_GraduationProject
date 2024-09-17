@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.repository.RoleRepository;
+import org.example.util.consts.RoleConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,6 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public Role getDefaultRole(User user) {
-        return roleRepository.findById(2);
+        return roleRepository.findById(RoleConst.ID_USER_ROLE);
     }
 }

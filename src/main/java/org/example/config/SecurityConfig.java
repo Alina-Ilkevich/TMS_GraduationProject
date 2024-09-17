@@ -20,11 +20,10 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers("/user").hasRole("user")
-                                .requestMatchers("/admin/**").hasRole("admin")
-                                .requestMatchers("/master/**").hasRole("master")
+                        request.requestMatchers("/user").hasRole("USER")
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/master/**").hasRole("MASTER")
                                 .requestMatchers("/all/**").permitAll()
-                                .requestMatchers("/auth/**").authenticated()
                                 .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll())
                 .formLogin(login -> login
                         .defaultSuccessUrl("/all/salon/main")
