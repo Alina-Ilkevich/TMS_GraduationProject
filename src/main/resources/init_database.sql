@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS "animal_service" (
 id SERIAL NOT NULL,
 service_name VARCHAR(100) NOT NULL,
 description TEXT,
-execution_time INTERVAL NOT NULL,
+execution_time TIME NOT NULL,
 cost INT NOT NULL,
 PRIMARY KEY (id)
 )

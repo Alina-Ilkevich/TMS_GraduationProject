@@ -136,11 +136,16 @@
     </div>
 </div>
 
-<a class="btn btn-outline-dark btn-lg" href="/admin/showuser" role="button">
+<a class="btn btn-outline-dark btn-lg" href="/admin/showuser" role="button" style="margin-bottom: 10px">
     <div class="little-text" >
         <p>Посмотреть всех пользователей</p>
     </div>
 </a>
-
+<div class="break"></div>
+<a class="btn btn-outline-dark btn-lg" href="/admin/addanimalservice" role="button" style="margin-bottom: 10px">
+    <div class="little-text" >
+        <p>Добавить услугу</p>
+    </div>
+</a>
 </body>
 </html>
