@@ -93,15 +93,15 @@
 
             <div class="form-group mb-3 password-container">
                 <label for="password"><h5>Пароль:</h5></label>
-                <form:password path="password" class="form-control" id="password"/>
-                <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
+                <form:password path="password" class="form-control" id="password" oninput="checkPasswordMatch()"/>
+                <i class="fa fa-eye toggle-password eye-1" onclick="togglePassword('password', 'eye-1')"></i>
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
 
             <div class="form-group mb-3 password-container">
                 <label for="password"><h5>Повторите пароль:</h5></label>
-                <form:password path="password" class="form-control" id="confirmPassword"/>
-                <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
+                <form:password path="password" class="form-control" id="confirm-password" name="confirmPassword" oninput="checkPasswordMatch()"/>
+                <i class="fa fa-eye toggle-password eye-2" onclick="togglePassword('confirm-password', 'eye-2')"></i>
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
 
@@ -111,15 +111,27 @@
     </div>
 </div>
 <script>
-    function togglePassword() {
-        var passwordField = document.getElementById("password");
-        var confirmPasswordField = document.getElementById("confirmPassword");
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            confirmPasswordField.type = "text";
+    function togglePassword(elementId, toggle) {
+        const passwordField = document.getElementById(elementId);
+        const eyeIcon = document.querySelector(toggle);
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
         } else {
-            passwordField.type = "password";
-            confirmPasswordField.type = "password";
+            passwordField.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+
+    function checkPasswordMatch() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        if (password !== confirmPassword) {
+            document.getElementById("confirm-password").setCustomValidity("Пароль не совпадает!");
+        } else {
+            document.getElementById("confirm-password").setCustomValidity("");
         }
     }
 </script>
