@@ -2,6 +2,12 @@ package org.example.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "\"user\"")
@@ -13,23 +19,44 @@ public class User {
     private int id;
 
     @Column(name = "name")
+    @NotEmpty (message = "Имя не должно быть пустым")
+    @Size (min = 2, max = 30, message = "Длина имени должна составлять от 2 до 30 символов")
     private String name;
 
     @Column(name = "login")
+    @NotEmpty (message = "Логин не должен быть пустым")
+    @Size (min = 2, max = 30, message = "Длина логина должна составлять от 2 до 30 символов")
     private String login;
 
     @Column(name = "password")
+    @NotEmpty (message = "Пароль не должен быть пустым")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,20}$",
+            message = "Пароль должен содержать хотя бы 1 заглавную букву, 1 строчную букву, 1 цифру и быть не менее 8 символов")
     private String password;
 
     @Column(name = "phone_number")
+    @NotEmpty(message = "Номер телефона не должен быть пустым")
+    @Pattern(regexp = "^(\\+375|80)(29|25|44|33)\\d{7}$", message = "Номер телефона введен некорректно")
     private String phoneNumber;
 
     @Column(name = "email")
+    @Email(message = "Некорректный email")
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    public List<Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<Schedule> schedule) {
+        this.schedule = schedule;
+    }
+
+    @OneToMany(mappedBy = "userSchedule")
+    private List<Schedule> schedule;
 
     public int getId() {
         return id;

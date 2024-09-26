@@ -51,12 +51,13 @@
             position: relative;
         }
 
-        .password-container .toggle-password {
+         .toggle-password {
             position: absolute;
             top: 50%;
             right: 10px;
             transform: translateY(-50%);
             cursor: pointer;
+            color: black
         }
     </style>
 </head>
@@ -64,7 +65,6 @@
 <div class="container">
     <h2 class="mt-5">Регистрация</h2>
     <div class="form-container">
-        <p class="text-warning">${message}</p>
         <form:form action="/all/registration" method="post" modelAttribute="userForm">
             <div class="form-group mb-3">
                 <label for="name"><h5>Имя:</h5></label>
@@ -76,17 +76,19 @@
                 <label for="phoneNumber"><h5>Номер телефона:</h5></label>
                 <form:input type="text" path="phoneNumber" class="form-control" id="phoneNumber"/>
                 <form:errors path="phoneNumber" cssClass="text-danger"/>
+                </div>
 
             <div class="form-group mb-3">
                 <label for="email"><h5>Email:</h5></label>
                 <form:input type="text" path="email" class="form-control" id="email"/>
                 <form:errors path="email" cssClass="text-danger"/>
-
+                </div>
 
             <div class="form-group mb-3">
                 <p class="text-warning">${usernameError}</p>
                 <label for="login"><h5>Логин:</h5></label>
                 <form:input type="text" path="login" class="form-control" id="login"/>
+                <form:errors path="login" cssClass="text-danger"/>
             </div>
 
             <div class="form-group mb-3 password-container">
@@ -98,7 +100,7 @@
 
             <div class="form-group mb-3 password-container">
                 <label for="password"><h5>Повторите пароль:</h5></label>
-                <form:password path="password" class="form-control" id="password"/>
+                <form:password path="password" class="form-control" id="confirmPassword"/>
                 <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
@@ -108,5 +110,18 @@
         </form:form>
     </div>
 </div>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var confirmPasswordField = document.getElementById("confirmPassword");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            confirmPasswordField.type = "text";
+        } else {
+            passwordField.type = "password";
+            confirmPasswordField.type = "password";
+        }
+    }
+</script>
 </body>
 </html>
