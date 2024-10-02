@@ -30,8 +30,7 @@ public class User {
 
     @Column(name = "password")
     @NotEmpty (message = "Пароль не должен быть пустым")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,20}$",
-            message = "Пароль должен содержать хотя бы 1 заглавную букву, 1 строчную букву, 1 цифру и быть не менее 8 символов")
+    @Size (min = 8, message = "Длина пароля должна составлять от 8 символов")
     private String password;
 
     @Column(name = "phone_number")
