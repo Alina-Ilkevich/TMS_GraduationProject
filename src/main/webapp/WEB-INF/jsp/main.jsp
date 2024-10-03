@@ -96,7 +96,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/all/salon/comment">Отзывы</a>
                 </li>
-                <sec:authorize access="hasRole('admin')">
+                <li class="nav-item">
+                    <sec:authorize access="isAuthenticated()">
+                        <a class="nav-link" href="/all/choosemaster">Запись</a>
+                    </sec:authorize>
+                </li>
+                <sec:authorize access="hasRole('ADMIN')">
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/adminpage">Для админа</a>
                     </li>
@@ -257,5 +262,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

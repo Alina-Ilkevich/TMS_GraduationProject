@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnimalServiceRepository extends JpaRepository<AnimalService, Integer> {
     AnimalService save(AnimalService animalService);
+    AnimalService findById(int id);
 }

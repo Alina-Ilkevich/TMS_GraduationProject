@@ -3,7 +3,7 @@ package org.example.service;
 import org.example.dto.AnimalServiceDTO;
 import org.example.entity.AnimalService;
 import org.example.repository.AnimalServiceRepository;
-import org.example.util.timeconvert.TimeUtil;
+import org.example.util.timeutil.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

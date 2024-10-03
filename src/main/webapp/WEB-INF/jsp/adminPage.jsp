@@ -81,8 +81,7 @@
         <div class="col-8">
             <ul class="nav nav-underline">
                 <li class="nav-item">
-
-                    <a class="nav-link active" aria-current="page" href="main">
+                    <a class="nav-link active" aria-current="page" href="/all/salon/main">
                         <img src="https://static.tildacdn.com/tild3139-3735-4137-a131-323461353465/img_26395_1.png"
                              width="30"
                              height="30">
@@ -103,7 +102,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/all/salon/comment">Отзывы</a>
                 </li>
-                <sec:authorize access="hasRole('admin')">
+                <li class="nav-item">
+                    <sec:authorize access="isAuthenticated()">
+                        <a class="nav-link" href="/all/choosemaster">Запись</a>
+                    </sec:authorize>
+                </li>
+                <sec:authorize access="hasRole('ADMIN')">
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/adminpage">Для админа</a>
                     </li>
