@@ -44,7 +44,7 @@ public class AdminController {
 
     @GetMapping("/addanimalservice")
     public String showAddAnimalServicePage(Model model){
-        model.addAttribute("animalServiceForm", new AnimalService());
+        model.addAttribute("animalServiceForm", new AnimalServiceDTO());
         return "addAnimalService";
     }
 
