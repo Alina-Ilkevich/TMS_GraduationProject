@@ -195,6 +195,14 @@
                         ${comment.userComment.name}
                     </div>
                 </div>
+                <sec:authorize access="hasRole('ADMIN')">
+                    <div class="text-end">
+                        <form action="/all/salon/comment" method="post" style="display:inline;">
+                            <input type="hidden" name="commentId" value="${comment.id}" />
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </div>
+                </sec:authorize>
             </c:forEach></p>
         </div>
     </div>

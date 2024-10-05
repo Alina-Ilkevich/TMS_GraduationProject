@@ -39,6 +39,12 @@ public class CommentController {
         return "comment";
     }
 
+    @PostMapping("/comment")
+    public String deleteComment(@RequestParam int commentId){
+        commentService.deleteComment(commentId);
+        return "redirect:/all/salon/comment";
+    }
+
     @GetMapping("/addcomment")
     public String showAddCommentPage(Model model){
         model.addAttribute("commentForm", new Comment());
