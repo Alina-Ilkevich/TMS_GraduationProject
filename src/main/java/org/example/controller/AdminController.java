@@ -36,11 +36,9 @@ public class AdminController {
     }
 
     @PostMapping("/showuser")
-    public String  deleteUser(@RequestParam int userId,
-                              @RequestParam String action,
-                              Model model) {
-            userService.deleteUser(userId);
-        return "redirect:/admin/showuser";
+    public String  deleteUser(@RequestParam int userId) {
+        userService.deleteUser(userId);
+    return "redirect:/admin/showuser";
     }
 
     @GetMapping("/addanimalservice")
