@@ -35,5 +35,16 @@ public class TimeUtil {
             return null;
         }
     }
+
+    public static Timestamp convertStringFromSchedule(String dateString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        try {
+            Date parsedDate = dateFormat.parse(dateString);
+            return new Timestamp(parsedDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
 

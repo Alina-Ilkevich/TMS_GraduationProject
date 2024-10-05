@@ -140,16 +140,22 @@
     </div>
 </div>
 
-<a class="btn btn-outline-dark btn-lg" href="/admin/showuser" role="button" style="margin-bottom: 10px">
-    <div class="little-text" >
-        <p>Посмотреть всех пользователей</p>
-    </div>
-</a>
-<div class="break"></div>
-<a class="btn btn-outline-dark btn-lg" href="/admin/addanimalservice" role="button" style="margin-bottom: 10px">
-    <div class="little-text" >
-        <p>Добавить услугу</p>
-    </div>
-</a>
+<div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+    <a class="btn btn-outline-dark btn-lg" href="/admin/showuser" role="button">
+        <div class="little-text">
+            <p>Посмотреть всех пользователей</p>
+        </div>
+    </a>
+    <a class="btn btn-outline-dark btn-lg" href="/admin/addanimalservice" role="button">
+        <div class="little-text">
+            <p>Добавить услугу</p>
+        </div>
+    </a>
+    <a class="btn btn-outline-dark btn-lg" href="/admin/addschedule" role="button">
+        <div class="little-text">
+            <p>Добавить расписание</p>
+        </div>
+    </a>
+</div>
 </body>
 </html>

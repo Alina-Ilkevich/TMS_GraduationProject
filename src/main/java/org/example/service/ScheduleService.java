@@ -1,8 +1,10 @@
 package org.example.service;
 
+import org.example.dto.ScheduleDTO;
 import org.example.entity.Schedule;
 import org.example.entity.User;
 import org.example.repository.ClientRecordRepository;
+import org.example.repository.ScheduleRepository;
 import org.example.repository.UserRepository;
 import org.example.util.consts.ExecutionTimeConst;
 import org.example.util.timeutil.TimeUtil;
@@ -21,6 +23,9 @@ public class ScheduleService {
 
     @Autowired
     private ClientRecordRepository clientRecordRepository;
+
+    @Autowired
+    private ScheduleRepository scheduleRepository;
 
     public List<Schedule> getScheduleList(int id) {
         Optional<User> masterOptional = userRepository.findById(id);
@@ -67,5 +72,14 @@ public class ScheduleService {
             }
         }
         return timeFromScheduleList;
+    }
+
+    public void addSchedule(ScheduleDTO scheduleDTO){
+        Schedule schedule = new Schedule();
+        schedule.setStartTime(TimeUtil.convertStringFromSchedule(scheduleDTO.getStartTime()));
+        schedule.setEndTime(TimeUtil.convertStringFromSchedule(scheduleDTO.getEndTime()));
+        User master = userRepository.findById(scheduleDTO.getMasterId()).get();
+        schedule.setUserSchedule(master);
+        scheduleRepository.save(schedule);
     }
 }
