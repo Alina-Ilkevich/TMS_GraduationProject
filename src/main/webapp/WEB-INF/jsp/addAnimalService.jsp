@@ -28,6 +28,7 @@
             color: black;
             text-align: center;
         }
+
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -47,18 +48,6 @@
             font-size: 1.2em;
             margin-top: 20px;
         }
-
-        .password-container {
-            position: relative;
-        }
-
-        .password-container .toggle-password {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -69,24 +58,27 @@
         <form:form action="/admin/addanimalservice" method="post" modelAttribute="animalServiceForm">
             <div class="form-group mb-3">
                 <label for="serviceName"><h5>Название услуги:</h5></label>
-                <form:input type="text" path="serviceName" class="form-control" id="serviceName"/>
+                <form:input type="text" path="serviceName" class="form-control" id="serviceName" required="required"/>
                 <form:errors path="serviceName" cssClass="text-danger"/>
             </div>
 
             <div class="form-group mb-3">
                 <label for="description"><h5>Описание услуги:</h5></label>
-                <form:input type="text" path="description" class="form-control" id="description"/>
+                <form:input type="text" path="description" class="form-control" id="description" required="required"/>
                 <form:errors path="description" cssClass="text-danger"/>
+            </div>
 
             <div class="form-group mb-3">
                 <label for="executionTime"><h5>Время выполнения:</h5></label>
-                <form:input type="time" path="executionTime" class="form-control" id="executionTime" />
+                <form:input type="time" path="executionTime" class="form-control" id="executionTime" required="required"/>
                 <form:errors path="executionTime" cssClass="text-danger"/>
+            </div>
 
             <div class="form-group mb-3">
                 <p class="text-warning">${usernameError}</p>
                 <label for="cost"><h5>Стоимость:</h5></label>
-                <form:input type="int" path="cost" class="form-control" id="cost"/>
+                <form:input type="number" path="cost" class="form-control" id="cost" required="required"/>
+                <form:errors path="cost" cssClass="text-danger"/>
             </div>
 
             <button type="submit" class="btn btn-primary w-100" style="margin-bottom: 5px">Сохранить услугу</button>
@@ -96,4 +88,3 @@
 </div>
 </body>
 </html>
-

@@ -1,5 +1,7 @@
 package org.example.dto;
 
+import jakarta.validation.constraints.Min;
+
 public class AnimalServiceDTO {
 
     private String serviceName;
@@ -8,6 +10,7 @@ public class AnimalServiceDTO {
 
     private String executionTime;
 
+    @Min(value = 1, message = "Стоимость должна быть больше 0")
     private int cost;
 
     public String getServiceName() {

@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.validation.Valid;
 import org.example.dto.AnimalServiceDTO;
 import org.example.entity.User;
 import org.example.service.AnimalServiceService;
@@ -7,6 +8,7 @@ import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,7 +50,10 @@ public class AdminController {
     }
 
     @PostMapping("/addanimalservice")
-    public String addAnimalService(@ModelAttribute("animalServiceForm") AnimalServiceDTO animalServiceDTO){
+    public String addAnimalService(@ModelAttribute("animalServiceForm") @Valid AnimalServiceDTO animalServiceDTO, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "addAnimalService";
+        }
         animalServiceService.addAnimalService(animalServiceDTO);
         return "redirect:/all/salon/service";
     }
