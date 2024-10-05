@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.validation.Valid;
 import org.example.entity.Comment;
 import org.example.service.CommentService;
 import org.example.util.consts.PaginationConst;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +46,10 @@ public class CommentController {
     }
 
     @PostMapping("/addcomment")
-    public String addComment(@ModelAttribute("commentForm") Comment comment, Model model){
+    public String addComment(@ModelAttribute("commentForm") @Valid Comment comment, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            return "addComment";
+        }
         commentService.saveComment(comment);
         return "redirect:/all/salon/comment";
     }

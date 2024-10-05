@@ -2,6 +2,7 @@ package org.example.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "comment")
@@ -13,6 +14,7 @@ public class Comment {
     private int id;
 
     @Column(name = "comment")
+    @Size(min = 10, message = "Отзыв должен состоять хотя бы из 10 символов")
     private String comment;
 
     @ManyToOne
