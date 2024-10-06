@@ -51,13 +51,6 @@
             font-weight: bold;
         }
 
-        .text-warning {
-            color: red !important;
-            text-align: center;
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-
         .info-item {
             margin-bottom: 15px;
         }
@@ -141,23 +134,38 @@
         </div>
     </div>
 </div>
-<c:forEach items="${clientRecords}" var="clientRecord">
-    <div class="info-container">
-        <div class="info-item">
-            <strong>Мастер:</strong>
-            <span>${clientRecord.master.name}</span>
+<c:choose>
+    <c:when test="${not empty clientRecords}">
+        <c:forEach items="${clientRecords}" var="clientRecord">
+            <div class="info-container">
+                <div class="info-item">
+                    <strong>Мастер:</strong>
+                    <span>${clientRecord.master.name}</span>
 
-            <br><strong>Услуга:</strong>
-            <span>${clientRecord.animalService.serviceName}</span>
+                    <br><strong>Услуга:</strong>
+                    <span>${clientRecord.animalService.serviceName}</span>
 
-            <br><strong>Дата и время:</strong>
-            <span>${clientRecord.time}</span>
+                    <br><strong>Дата и время:</strong>
+                    <span>${clientRecord.time}</span>
 
-            <br><strong>Стоимость услуги:</strong>
-            <span>${clientRecord.animalService.cost} бел.руб</span>
+                    <br><strong>Стоимость услуги:</strong>
+                    <span>${clientRecord.animalService.cost} бел.руб</span>
+                </div>
+            </div>
+        </c:forEach>
+    </c:when>
+    <c:otherwise>
+        <h2>Вы пока не записаны к мастеру</h2>
+        <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+            <a class="btn btn-outline-dark btn-lg" href="/all/choosemaster" role="button">
+                <div class="little-text">
+                    <p>Записаться</p>
+                </div>
+            </a>
         </div>
-    </div>
-</c:forEach>
+    </c:otherwise>
+</c:choose>
+
 </div>
 </body>
 </html>

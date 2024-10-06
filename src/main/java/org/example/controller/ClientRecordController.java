@@ -144,10 +144,10 @@ public class ClientRecordController {
     @PostMapping("/makeappointment")
     public String makeAppointment(@ModelAttribute ("appointmentForm")ClientRecordDTO clientRecordDTO){
         clientRecordService.saveClientRecord(clientRecordDTO);
-        return "redirect:/all/salon/main";
+        return "redirect:/all/showclientrecord";
     }
 
-    @GetMapping("showclientrecord")
+    @GetMapping("/showclientrecord")
     public String showClientRecord(Model model){
         List<ClientRecord> clientRecords = clientRecordService.showClientRecord();
         model.addAttribute("clientRecords", clientRecords);
