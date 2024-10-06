@@ -156,7 +156,7 @@
     </c:when>
     <c:otherwise>
         <h2>Вы пока не записаны к мастеру</h2>
-        <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+        <div style="max-width: 200px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
             <a class="btn btn-outline-dark btn-lg" href="/all/choosemaster" role="button">
                 <div class="little-text">
                     <p>Записаться</p>
