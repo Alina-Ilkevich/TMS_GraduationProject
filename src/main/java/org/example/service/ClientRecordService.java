@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientRecordService {
 
@@ -42,5 +44,13 @@ public class ClientRecordService {
         clientRecord.setUser(user);
 
         clientRecordRepository.save(clientRecord);
+    }
+
+    public List<ClientRecord> showClientRecord(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userLogin = authentication.getName();
+        User user = userRepository.findByLogin(userLogin);
+
+        return clientRecordRepository.findByUserId(user.getId());
     }
 }

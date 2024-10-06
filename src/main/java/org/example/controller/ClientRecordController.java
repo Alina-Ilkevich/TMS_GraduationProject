@@ -4,7 +4,6 @@ import org.example.dto.ClientRecordDTO;
 import org.example.entity.AnimalService;
 import org.example.entity.ClientRecord;
 import org.example.entity.User;
-import org.example.repository.UserRepository;
 import org.example.service.AnimalServiceService;
 import org.example.service.ClientRecordService;
 import org.example.service.ScheduleService;
@@ -141,11 +140,18 @@ public class ClientRecordController {
 
         return "appointment";
     }
-    @Autowired
-    private UserRepository userRepository;
+
     @PostMapping("/makeappointment")
     public String makeAppointment(@ModelAttribute ("appointmentForm")ClientRecordDTO clientRecordDTO){
         clientRecordService.saveClientRecord(clientRecordDTO);
         return "redirect:/all/salon/main";
+    }
+
+    @GetMapping("showclientrecord")
+    public String showClientRecord(Model model){
+        List<ClientRecord> clientRecords = clientRecordService.showClientRecord();
+        model.addAttribute("clientRecords", clientRecords);
+
+        return "showClientRecord";
     }
 }

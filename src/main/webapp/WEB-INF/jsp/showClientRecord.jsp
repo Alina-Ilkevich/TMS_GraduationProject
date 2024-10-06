@@ -3,73 +3,63 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+    <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <style>
-        body{
+        body {
             padding: 0px 100px 200px 10px;
         }
-        div.main-text{
+        div.main-text {
             font-size: 5.5em;
             text-align: center;
             font-weight: 900;
-            font-family: serif
+            font-family: serif;
         }
-        div.text{
-            font-size: 2em;
-            text-align: justify;
-            font-family: serif
+        div.row {
+            padding: 30px;
         }
-        div.main-heading{
-            font-size: 5em;
-            font-weight: 900;
-            text-align: center;
-            font-family: serif
-        }
-        div.heading{
-            font-size: 2em;
-            font-weight: 900;
-            text-align: justify;
-            text-align: center;
-            font-family: serif
-        }
-        div.little-text{
-            font-size: 1.5em;
-            text-align: justify;
-            text-align: center;
-            font-family: serif
-        }
-        div.row{
-            padding: 30px
-        }
-        div.comment{
-        padding: 30px;
-            font-size: 1.5em;
-            text-align: justify;
-            font-style: italic;
-            text-align: justify;
-            font-family: serif
-        }
-        .nav-link{
+        .nav-link {
             font-size: 1.3em;
             font-family: serif;
             color: black;
             text-align: center;
         }
-        div.xs-text{
-            font-size: 1.2em;
+
+        h2, h5 {
             font-family: serif;
-            color: #686868;
-            text-align: justify
+            color: black;
+            text-align: center;
         }
-        div.card{
-            margin: 50px 0px 0px 0px
+
+        .form-container, .info-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            background-color: #FFFFF0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Отступ между окошками */
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .text-warning {
+            color: red !important;
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -142,97 +132,32 @@
     <div class="row">
         <div class="col-6">
             <div class="main-text">
-                <p><br>Отзывы</p>
+                <p>Личный кабинет</p>
             </div>
         </div>
-
         <div class="col-6">
             <img width="637" height="398"
                  src="https://koshka.top/uploads/posts/2023-10/1696312104_koshka-top-p-koshka-na-fone-sobak-24.jpg">
         </div>
     </div>
 </div>
+<c:forEach items="${clientRecords}" var="clientRecord">
+    <div class="info-container">
+        <div class="info-item">
+            <strong>Мастер:</strong>
+            <span>${clientRecord.master.name}</span>
 
-<sec:authorize access="isAuthenticated()">
-    <div class="container-fluid">
-        <div class="row" style="padding: 0px">
-            <div class="col-5">
-            </div>
-            <div class="col-4">
-                <a class="btn btn-outline-dark btn-lg" href="/all/salon/addcomment" role="button">
-                    <div class="little-text" >
-                        <p>Оставить отзыв</p>
-                    </div>
-                </a>
-            </div>
+            <br><strong>Услуга:</strong>
+            <span>${clientRecord.animalService.serviceName}</span>
+
+            <br><strong>Дата и время:</strong>
+            <span>${clientRecord.time}</span>
+
+            <br><strong>Стоимость услуги:</strong>
+            <span>${clientRecord.animalService.cost} бел.руб</span>
         </div>
     </div>
-</div>
-</sec:authorize>
-
-<sec:authorize access="!isAuthenticated()">
-    <div class="container-fluid">
-        <div class="row" style="padding: 0px">
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-                <a class="btn btn-outline-dark btn-lg" href="/login" role="button">
-                    <div class="little-text" >
-                        <p>Чтобы оставить отзыв, войдите</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-</sec:authorize>
-
-    <div class="row">
-        <div class="col-1">
-        </div>
-        <div class="col-10">
-            <p><c:forEach items="${comments}" var="comment">
-                <div class="card">
-                    <div class="comment">
-                        ${comment.comment}
-                    </div>
-                    <div class="heading" >
-                        ${comment.userComment.name}
-                    </div>
-                </div>
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="text-end">
-                        <form action="/all/salon/comment" method="post" style="display:inline;">
-                            <input type="hidden" name="commentId" value="${comment.id}" />
-                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
-                        </form>
-                    </div>
-                </sec:authorize>
-            </c:forEach></p>
-        </div>
-    </div>
-</div>
-
-<div class="little-text">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
-        </div>
-            <div class="col-4">
-                <div>
-                    <c:if test="${currentPage > 0}">
-                        <a href="?page=${currentPage - 1}">Previous</a>
-                    </c:if>
-
-                    Page ${currentPage + 1} of ${totalPages}
-
-                    <c:if test="${currentPage < totalPages - 1}">
-                        <a href="?page=${currentPage + 1}">Next</a>
-                    </c:if>
-                </div>
-            </div>
-        </div>
-    </div>
+</c:forEach>
 </div>
 </body>
 </html>
