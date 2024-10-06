@@ -5,7 +5,6 @@ import org.example.entity.User;
 import org.example.repository.UserRepository;
 import org.example.util.consts.RoleConst;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +22,13 @@ public class UserService{
     @Autowired
     private RoleService roleService;
     
-    public User loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(login);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return user;
-    }
+//    public User loadUserByUsername(String login) throws UsernameNotFoundException {
+//        User user = userRepository.findByLogin(login);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("User not found");
+//        }
+//        return user;
+//    }
 
     public boolean checkUniqueLogin(User user){
         User userFromDB = userRepository.findByLogin(user.getLogin());
@@ -60,3 +59,4 @@ public class UserService{
         return userRepository.findByRoleId(RoleConst.ID_MASTER_ROLE);
     }
 }
+
