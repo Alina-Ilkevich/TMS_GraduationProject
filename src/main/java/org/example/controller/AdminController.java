@@ -2,6 +2,7 @@ package org.example.controller;
 
 import jakarta.validation.Valid;
 import org.example.dto.AnimalServiceDTO;
+import org.example.entity.AnimalService;
 import org.example.entity.User;
 import org.example.service.AnimalServiceService;
 import org.example.service.UserService;
@@ -53,6 +54,28 @@ public class AdminController {
             return "addAnimalService";
         }
         animalServiceService.addAnimalService(animalServiceDTO);
+        return "redirect:/all/salon/service";
+    }
+
+    @GetMapping("/updatecost")
+    public String showupdateAnimalServiceCostPage(Model model){
+        List<AnimalService> services = animalServiceService.findService();
+        model.addAttribute("services", services);
+
+        model.addAttribute("costForm", new AnimalServiceDTO());
+        return "updateAnimalServiceCost";
+    }
+
+    @PostMapping("/updatecost")
+    public String updateAnimalServiceCost(@ModelAttribute("costForm") @Valid AnimalServiceDTO animalServiceDTO, BindingResult bindingResult, Model model){
+        List<AnimalService> services = animalServiceService.findService();
+        model.addAttribute("services", services);
+
+        if (bindingResult.hasErrors()) {
+            return "updateAnimalServiceCost";
+        }
+
+        animalServiceService.updateAnimalServiceCost(animalServiceDTO);
         return "redirect:/all/salon/service";
     }
 }

@@ -27,4 +27,10 @@ public class AnimalServiceService {
         animalService.setCost(animalServiceDTO.getCost());
         animalServiceRepository.save(animalService);
     }
+
+    public void updateAnimalServiceCost(AnimalServiceDTO animalServiceDTO){
+        AnimalService animalService = animalServiceRepository.findById(animalServiceDTO.getAnimalServiceId());
+        animalService.setCost(animalServiceDTO.getCost());
+        animalServiceRepository.save(animalService);
+    }
 }

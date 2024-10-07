@@ -145,7 +145,7 @@
     <div class="row">
         <div class="col-6">
             <div class="main-text">
-                <p><br>Страница администратора</p>
+                <p>Страница администратора</p>
             </div>
         </div>
 
@@ -170,6 +170,11 @@
     <a class="btn btn-outline-dark btn-lg" href="/admin/addschedule" role="button">
         <div class="little-text">
             <p>Добавить расписание</p>
+        </div>
+    </a>
+    <a class="btn btn-outline-dark btn-lg" href="/admin/updatecost" role="button">
+        <div class="little-text">
+            <p>Обновить стоимость услуги</p>
         </div>
     </a>
 </div>

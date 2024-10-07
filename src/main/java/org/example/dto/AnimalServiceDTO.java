@@ -4,6 +4,8 @@ import jakarta.validation.constraints.Min;
 
 public class AnimalServiceDTO {
 
+    private int animalServiceId;
+
     private String serviceName;
 
     private String description;
@@ -12,6 +14,14 @@ public class AnimalServiceDTO {
 
     @Min(value = 1, message = "Стоимость должна быть больше 0")
     private int cost;
+
+    public int getAnimalServiceId() {
+        return animalServiceId;
+    }
+
+    public void setAnimalServiceId(int animalServiceId) {
+        this.animalServiceId = animalServiceId;
+    }
 
     public String getServiceName() {
         return serviceName;
