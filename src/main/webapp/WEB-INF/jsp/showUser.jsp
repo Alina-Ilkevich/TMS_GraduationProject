@@ -56,7 +56,7 @@
             font-family: serif
         }
         .nav-link{
-            font-size: 1.5em;
+            font-size: 1.3em;
             font-family: serif;
             color: black;
             text-align: center;
@@ -81,7 +81,7 @@
         <div class="col-8">
             <ul class="nav nav-underline">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="main">
+                    <a class="nav-link active" aria-current="page" href="/all/salon/main">
                         <img src="https://static.tildacdn.com/tild3139-3735-4137-a131-323461353465/img_26395_1.png"
                              width="30"
                              height="30">
@@ -102,16 +102,37 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/all/salon/comment">Отзывы</a>
                 </li>
-                <sec:authorize access="hasRole('admin')">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/adminpage">Для админа</a>
-                    </li>
-                </sec:authorize>
+                <li class="nav-item">
+                    <sec:authorize access="isAuthenticated()">
+                        <a class="nav-link" href="/all/choosemaster">Запись</a>
+                    </sec:authorize>
+                </li>
+                <li class="nav-item">
+                    <sec:authorize access="isAuthenticated()">
+                        <a class="nav-link" href="/all/showclientrecord">Личный кабинет</a>
+                    </sec:authorize>
+                </li>
+                <li class="nav-item">
+                    <sec:authorize access="hasRole('ADMIN')">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/adminpage">Для админа</a>
+                        </li>
+                    </sec:authorize>
+                </li>
             </ul>
         </div>
-
         <div class="col-2">
             <li class="nav-item">
+                <sec:authorize access="!isAuthenticated()">
+                    <a class="nav-link" href="/all/registration">Зарегистрироваться</a>
+                </sec:authorize>
+            </li>
+        </div>
+        <div class="col-2">
+            <li class="nav-item">
+                <sec:authorize access="!isAuthenticated()">
+                    <a class="nav-link" href="/login">Войти</a>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <a class="nav-link" href="/logout">Выйти</a>
                 </sec:authorize>
