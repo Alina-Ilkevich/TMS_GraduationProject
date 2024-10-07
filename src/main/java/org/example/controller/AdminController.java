@@ -3,8 +3,10 @@ package org.example.controller;
 import jakarta.validation.Valid;
 import org.example.dto.AnimalServiceDTO;
 import org.example.entity.AnimalService;
+import org.example.entity.ClientRecord;
 import org.example.entity.User;
 import org.example.service.AnimalServiceService;
+import org.example.service.ClientRecordService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class AdminController {
 
     @Autowired
     private AnimalServiceService animalServiceService;
+
+    @Autowired
+    private ClientRecordService clientRecordService;
 
     @GetMapping("/adminpage")
     public String showAdminPage(){
@@ -77,5 +82,19 @@ public class AdminController {
 
         animalServiceService.updateAnimalServiceCost(animalServiceDTO);
         return "redirect:/all/salon/service";
+    }
+
+    @GetMapping("showclientrecord")
+    public String showAllClientRecord(Model model){
+        List<ClientRecord> clientRecords = clientRecordService.showAllClientRecord();
+        model.addAttribute("clientRecords", clientRecords);
+
+        return "showAllClientRecord";
+    }
+
+    @PostMapping("/showclientrecord")
+    public String deleteClientRecord(@RequestParam int clientRecordId) {
+        clientRecordService.deleteClientRecord(clientRecordId);
+        return "redirect:/admin/showclientrecord";
     }
 }

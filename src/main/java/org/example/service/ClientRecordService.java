@@ -53,4 +53,12 @@ public class ClientRecordService {
 
         return clientRecordRepository.findByUserId(user.getId());
     }
+
+    public List<ClientRecord> showAllClientRecord(){
+        return clientRecordRepository.findAll();
+    }
+
+    public void deleteClientRecord(int clientRecordId){
+        clientRecordRepository.deleteById(clientRecordId);
+    }
 }

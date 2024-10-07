@@ -3,7 +3,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,66 +11,67 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <style>
-        body{
+        body {
             padding: 0px 100px 200px 10px;
         }
-        div.main-text{
+        div.main-text {
             font-size: 5.5em;
             text-align: center;
             font-weight: 900;
-            font-family: serif
+            font-family: serif;
         }
-        div.text{
+        div.text {
             font-size: 2em;
             text-align: justify;
-            font-family: serif
+            font-family: serif;
         }
-        div.main-heading{
+        div.main-heading {
             font-size: 5em;
             font-weight: 900;
             text-align: center;
-            font-family: serif
+            font-family: serif;
         }
-        div.heading{
+        div.heading {
             font-size: 2em;
             font-weight: 900;
-            text-align: justify;
             text-align: center;
-            font-family: serif
+            font-family: serif;
         }
-        div.little-text{
+        div.little-text {
             font-size: 1.5em;
             text-align: justify;
-            text-align: center;
-            font-family: serif
+            font-family: serif;
         }
-        div.row{
-            padding: 30px
-        }
-        div.comment{
-        padding: 30px;
+        div.comment {
+            padding: 30px;
             font-size: 1.5em;
             text-align: justify;
             font-style: italic;
-            text-align: justify;
-            font-family: serif
+            font-family: serif;
         }
-        .nav-link{
+        .nav-link {
             font-size: 1.3em;
             font-family: serif;
             color: black;
             text-align: center;
         }
-        div.xs-text{
-            font-size: 1.2em;
+        div.xs-text {
+            font-size: 1em;
             font-family: serif;
-            color: #686868;
-            text-align: justify
         }
-        div.card{
+        div.card {
             width: 38rem;
             height: 84rem;
-            margin: 50px 0px 0px 0px
+            margin: 50px 0px 0px 0px;
+        }
+        div.wrapper {
+            padding: 5px 80px 5px 135px;
+        }
+        .thick-underline {
+            border-top: 2px solid black;
+        }
+        div.row{
+            padding: 30px
         }
     </style>
 </head>
@@ -145,43 +145,112 @@
     <div class="row">
         <div class="col-6">
             <div class="main-text">
-                <p>Страница администратора</p>
+                <p>Все записи к мастеру</p>
             </div>
         </div>
-
         <div class="col-6">
-            <img width="637" height="398"
-                 src="https://koshka.top/uploads/posts/2023-10/1696312104_koshka-top-p-koshka-na-fone-sobak-24.jpg">
+            <img width="637" height="398" src="https://koshka.top/uploads/posts/2023-10/1696312104_koshka-top-p-koshka-na-fone-sobak-24.jpg">
         </div>
     </div>
 </div>
 
-<div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
-    <a class="btn btn-outline-dark btn-lg" href="/admin/showuser" role="button">
+<div class="wrapper">
+    <a class="btn btn-outline-dark btn-lg" href="/admin/adminpage" role="button">
         <div class="little-text">
-            <p>Посмотреть всех пользователей</p>
-        </div>
-    </a>
-    <a class="btn btn-outline-dark btn-lg" href="/admin/showclientrecord" role="button">
-        <div class="little-text">
-            <p>Посмотреть все записи к мастерам</p>
-        </div>
-    </a>
-    <a class="btn btn-outline-dark btn-lg" href="/admin/addanimalservice" role="button">
-        <div class="little-text">
-            <p>Добавить услугу</p>
-        </div>
-    </a>
-    <a class="btn btn-outline-dark btn-lg" href="/admin/addschedule" role="button">
-        <div class="little-text">
-            <p>Добавить расписание</p>
-        </div>
-    </a>
-    <a class="btn btn-outline-dark btn-lg" href="/admin/updatecost" role="button">
-        <div class="little-text">
-            <p>Обновить стоимость услуги</p>
+            <p>Назад</p>
         </div>
     </a>
 </div>
+
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px">
+            <div class="col-1">
+                <div class="little-text">
+                    <p>ID</p>
+                </div>
+            </div>
+            <div class="col-11">
+                <div class="row" style="padding: 0px">
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Клиент</p>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="little-text">
+                            <p>Мастер</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="little-text">
+                            <p>Услуга</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Дата и время записи</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="little-text">
+                            <p>Стоимость</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thick-underline"></div>
+        <c:forEach items="${clientRecords}" var="clientRecord">
+            <div class="row" style="padding: 0px;">
+                <div class="col-1">
+                    <div class="xs-text">
+                        <p>${clientRecord.id}</p>
+                    </div>
+                </div>
+                <div class="col-11">
+                    <div class="row" style="padding: 0px">
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${clientRecord.user.name}</p>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="xs-text">
+                                <p>${clientRecord.master.name}</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="xs-text">
+                                <p>${clientRecord.animalService.serviceName}</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${clientRecord.time}</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="xs-text">
+                                <p>${clientRecord.animalService.cost} бел. руб</p>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="xs-text">
+                                <form action="/admin/showclientrecord" method="post">
+                                    <input type="hidden" name="clientRecordId" value="${clientRecord.id}"/>
+                                    <input type="hidden" name="action" value="delete"/>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </c:forEach>
+    </div>
+</div>
+
 </body>
 </html>
