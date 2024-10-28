@@ -51,7 +51,7 @@
             position: relative;
         }
 
-         .toggle-password {
+        .toggle-password {
             position: absolute;
             top: 50%;
             right: 10px;
@@ -76,13 +76,13 @@
                 <label for="phoneNumber"><h5>Номер телефона:</h5></label>
                 <form:input type="text" path="phoneNumber" class="form-control" id="phoneNumber"/>
                 <form:errors path="phoneNumber" cssClass="text-danger"/>
-                </div>
+            </div>
 
             <div class="form-group mb-3">
                 <label for="email"><h5>Email:</h5></label>
                 <form:input type="text" path="email" class="form-control" id="email"/>
                 <form:errors path="email" cssClass="text-danger"/>
-                </div>
+            </div>
 
             <div class="form-group mb-3">
                 <p class="text-warning">${usernameError}</p>
@@ -99,9 +99,8 @@
             </div>
 
             <div class="form-group mb-3 password-container">
-                <label for="password"><h5>Повторите пароль:</h5></label>
-                <form:password path="password" class="form-control" id="confirm-password" name="confirmPassword" oninput="checkPasswordMatch()"/>
-                <i class="fa fa-eye toggle-password eye-2" onclick="togglePassword('confirm-password', 'eye-2')"></i>
+                <label for="confirm-password"><h5>Подтвердите пароль:</h5></label>
+                <input type="password" class="form-control" id="confirm-password" oninput="checkPasswordMatch()"/>
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
 
@@ -113,7 +112,7 @@
 <script>
     function togglePassword(elementId, toggle) {
         const passwordField = document.getElementById(elementId);
-        const eyeIcon = document.querySelector(toggle);
+        const eyeIcon = document.querySelector(`.${toggle}`);
         if (passwordField.type === 'password') {
             passwordField.type = 'text';
             eyeIcon.classList.remove('fa-eye');
